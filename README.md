@@ -22,7 +22,6 @@ This solution runs entirely on your local machine, ensuring:
 - ✅ Full data privacy
 - ✅ Offline capability
 - ✅ Fast experimentation with prompt engineering
-
 ---
 
 ## 🎯 Key Features
@@ -84,7 +83,6 @@ Generated Markdown
 ## Project Structure
 
 ai-test-case-generator/
-ai-test-case-generator/
 ├── src/
 ├── prompts/
 ├── samples/
@@ -131,7 +129,6 @@ generated_test_cases.md
 The src/jira_xray.py module enables automated creation of Test issues in Jira/Xray.
 
 ### Typical use cases:
-
 Create AI-generated test cases directly in enterprise test management systems
 Accelerate test design workflows
 Reduce manual effort
