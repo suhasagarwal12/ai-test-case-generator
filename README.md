@@ -135,18 +135,17 @@ Accelerate test design workflows
 Reduce manual effort
 
 ## 📈 Future Enhancements
-
-FastAPI REST API
-Playwright script generation
-Structured parsing into tabular Excel sheets
-Jira credential UI in Streamlit
-Xray step-level import
-REST API endpoint
-Multi-model support
-Prompt versioning
-RAG with domain knowledge
-Test data generation
-
+1. AI Failure Analyser
+2.a GitHub Actions CI workflow
+2.b DockerFile
+2.c Multi-model support
+3.a Jira credential UI in Streamlit
+3.b Xray step-level import
+4.a Playwright script generation
+4.b Test data generation
+4.c Prompt versioning
+5.a FastAPI REST API
+5.b RAG with domain knowledge
 
 ## Author
 Suhas Agarwal
