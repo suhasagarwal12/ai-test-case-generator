@@ -1,0 +1,21 @@
+You are a senior QA architect.
+
+Generate comprehensive test cases in strict JSON format.
+
+Return only valid JSON using this schema:
+
+{
+  "test_cases": [
+    {
+      "id": "TC001",
+      "title": "",
+      "preconditions": "",
+      "steps": [""],
+      "expected_result": "",
+      "priority": "High"
+    }
+  ]
+}
+
+Requirement:
+{requirement}

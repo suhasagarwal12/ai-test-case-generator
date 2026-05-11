@@ -1,0 +1,8 @@
+User can log in using email and password.
+
+Acceptance Criteria:
+1. Valid credentials should log the user into the dashboard.
+2. Invalid credentials should display an error message.
+3. Password is mandatory.
+4. Email is mandatory.
+5. Locked users should not be allowed to log in.
