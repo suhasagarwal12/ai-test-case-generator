@@ -1,23 +1,89 @@
 # AI-Powered Test Case Generator Using Ollama
 
-Generate structured QA test cases from requirements using a local LLM running via Ollama (no API token costs).
+> Generate high-quality software test cases automatically using a local Large Language Model (LLM) powered by Ollama and Llama 3.2 — with zero API cost.
 
-## Features
-- Local AI using Ollama
-- JSON, Markdown, and Excel exports
-- CLI-based usage
-- Unit tests with pytest
+## 📌 Overview
 
-## Tech Stack
-- Python
-- Ollama
-- Llama 3.2 / Qwen
-- Requests
-- Pytest
-- OpenPyXL
-- Rich
+This project demonstrates how Generative AI can be applied to software quality engineering by automatically generating structured test cases from user stories, requirements, or feature descriptions.
+
+The application uses:
+
+- **Ollama** for local LLM inference
+- **Llama 3.2** as the underlying language model
+- **Streamlit** for an interactive web interface
+- **Pytest** for unit testing
+- **Pandas/OpenPyXL** for Excel export
+- **Jira/Xray APIs** for enterprise test management integration
+- **Python3** for backend logic and response parsing
+
+This solution runs entirely on your local machine, ensuring:
+
+- ✅ Zero API cost
+- ✅ Full data privacy
+- ✅ Offline capability
+- ✅ Fast experimentation with prompt engineering
+
+---
+
+## 🎯 Key Features
+
+### 🧠 AI-Powered Test Case Generation
+- Generate test cases from plain English requirements
+- Select the number of test cases (1–50)
+- Choose test types:
+  - Functional
+  - API
+  - UI
+  - Regression
+  - Security
+  - Performance
+
+### 🧪 Advanced Test Coverage Options
+- Boundary Value Cases
+- Negative Scenarios
+- Validation Checks
+
+### 📥 Export Capabilities
+- Download results as Excel (`.xlsx`)
+- Download results as Markdown (`.md`)
+
+### 🔗 Enterprise Integration
+- Create Test issues directly in Jira/Xray
+
+### 🧰 Engineering Best Practices
+- Modular Python architecture
+- Robust error handling
+- Unit tests with Pytest
+
+---
+
+## 🏗️ Architecture
+
+```text
+User Requirement
+       │
+       ▼
+Streamlit Web UI
+       │
+       ▼
+Prompt Builder
+       │
+       ▼
+Ollama Local API
+       │
+       ▼
+Llama 3.2 Model
+       │
+       ▼
+Generated Markdown
+       │
+       ├── Excel Export (.xlsx)
+       ├── Markdown Export (.md)
+       └── Jira/Xray Integration
 
 ## Project Structure
+
+ai-test-case-generator/
 ai-test-case-generator/
 ├── src/
 ├── prompts/
@@ -27,38 +93,62 @@ ai-test-case-generator/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+├── app.py
 
-## Quick Start
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-ollama pull llama3.2
-python -m src.cli -f samples/login_requirement.txt
+## 🚀 Installation
 
-## Sample Input
-A requirement file containing:
-User stories
-Acceptance criteria
-Functional requirements
+1. Clone the Repository : 
+git clone https://github.com/suhasagarwal112/ai-test-case-generator.git
+cd ai-test-case-generator
 
-## Sample Output
-output/test_cases.json
-output/test_cases.md
-output/test_cases.xlsx
+2. Create Virtual Environment : python -m venv venv
+3. Activate Virtual Environment : venv\Scripts\activate
+4. Install Dependencies : pip install -r requirements.txt
+5. Install Ollama : Download from: https://ollama.com/download
+6. Pull and Start the Model : ollama run llama3.2
+7. Launch the Application : python -m streamlit run app.py
 
-## Run Tests
-pytest -v
+🧪 Running Unit Tests : python -m pytest -v
 
-## Resume Bullet
+## Example requirement : 
+As a banking customer, I should be able to transfer funds between accounts so that I can manage my money efficiently.
 
-Designed and developed a zero-cost AI-powered test case generation platform using Python and Ollama, converting requirements into structured QA test cases and exporting them to JSON, Markdown, and Excel.
+## Example Output
+Positive transfer scenario
+Insufficient balance validation
+Invalid account number check
+Zero amount boundary case
+Daily transfer limit exceeded
 
-## Future Enhancements
-Streamlit web UI
+## 📥 Export Outputs
+
+The application allows users to download generated results as:
+
+generated_test_cases.xlsx
+generated_test_cases.md
+🔗 Jira/Xray Integration
+
+The src/jira_xray.py module enables automated creation of Test issues in Jira/Xray.
+
+### Typical use cases:
+
+Create AI-generated test cases directly in enterprise test management systems
+Accelerate test design workflows
+Reduce manual effort
+
+## 📈 Future Enhancements
+
 FastAPI REST API
-Jira integration
-BDD scenario generation
 Playwright script generation
+Structured parsing into tabular Excel sheets
+Jira credential UI in Streamlit
+Xray step-level import
+REST API endpoint
+Multi-model support
+Prompt versioning
+RAG with domain knowledge
+Test data generation
+
 
 ## Author
 Suhas Agarwal

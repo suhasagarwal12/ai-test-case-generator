@@ -1,37 +1,46 @@
-import json
-from pathlib import Path
-from openpyxl import Workbook
-from .config import OUTPUT_DIR
+import io
+from datetime import datetime
 
-Path(OUTPUT_DIR).mkdir(exist_ok=True)
+import pandas as pd
 
-def export_json(data: dict, filename: str = "test_cases.json"):
-    path = Path(OUTPUT_DIR) / filename
-    path.write_text(json.dumps(data, indent=2), encoding="utf-8")
-    return path
 
-def export_markdown(data: dict, filename: str = "test_cases.md"):
-    path = Path(OUTPUT_DIR) / filename
-    lines = [
-        "# Generated Test Cases",
-        "",
-        "| ID | Title | Expected Result | Priority |",
-        "|----|-------|----------------|----------|",
-    ]
-    for tc in data["test_cases"]:
-        lines.append(
-            f"| {tc['id']} | {tc['title']} | {tc['expected_result']} | {tc['priority']} |"
-        )
-    path.write_text("\n".join(lines), encoding="utf-8")
-    return path
+def to_excel(content: str) -> bytes:
+    """
+    Convert generated Markdown/text content into an Excel file.
 
-def export_excel(data: dict, filename: str = "test_cases.xlsx"):
-    path = Path(OUTPUT_DIR) / filename
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Test Cases"
-    ws.append(["ID", "Title", "Expected Result", "Priority"])
-    for tc in data["test_cases"]:
-        ws.append([tc["id"], tc["title"], tc["expected_result"], tc["priority"]])
-    wb.save(path)
-    return path
+    Current implementation stores the entire generated response in a single
+    worksheet. This is intentionally simple and robust.
+
+    Future enhancement:
+    - Parse Markdown into structured rows
+    - Create columns such as:
+      Test Case ID, Scenario, Steps, Expected Result, Priority, Severity
+    """
+
+    buffer = io.BytesIO()
+
+    df = pd.DataFrame(
+        {
+            "Generated Test Cases": [content],
+            "Generated On": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
+        }
+    )
+
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        df.to_excel(writer, index=False, sheet_name="Test Cases")
+
+    buffer.seek(0)
+    return buffer.getvalue()
+
+
+def to_markdown(content: str) -> bytes:
+    """
+    Convert generated content to a downloadable Markdown file.
+    """
+    header = (
+        "# AI-Generated Test Cases\n\n"
+        f"_Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}_"
+        "\n\n---\n\n"
+    )
+
+    return (header + content).encode("utf-8")
