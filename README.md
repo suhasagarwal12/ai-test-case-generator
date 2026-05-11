@@ -95,16 +95,17 @@ ai-test-case-generator/
 
 ## 🚀 Installation
 
-1. Clone the Repository : 
-git clone https://github.com/suhasagarwal112/ai-test-case-generator.git
+1. Clone the Repository : git clone https://github.com/suhasagarwal112/ai-test-case-generator.git
 cd ai-test-case-generator
-
 2. Create Virtual Environment : python -m venv venv
 3. Activate Virtual Environment : venv\Scripts\activate
 4. Install Dependencies : pip install -r requirements.txt
 5. Install Ollama : Download from: https://ollama.com/download
 6. Pull and Start the Model : ollama run llama3.2
 7. Launch the Application : python -m streamlit run app.py
+
+If cases needs to be generated locally without launching web ui then use : python -m src.cli -f samples/login_requirement.txt
+** login_requirement.txt contains sample scenario with acceptance criteria to generate cases via ollama integration
 
 🧪 Running Unit Tests : python -m pytest -v
 
